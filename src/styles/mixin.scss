@@ -1,0 +1,156 @@
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+// flex
+@mixin createFlex($direction: row, $content: start, $items: start) {
+  $direction-tab: (
+    row: row,
+    col: column
+  );
+  $content-tab: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around
+  );
+  $items-tab: (
+    start: flex-start,
+    end: flex-end,
+    center: center
+  );
+
+  display: flex;
+  flex-direction: map-get($direction-tab, $direction);
+  justify-content: map-get($content-tab, $content);
+  align-items: map-get($items-tab, $items);
+}
+
+// 根据列表中各div的px 切割列表获取各列表宽度
+@mixin inciseList($list-arr, $prefix: list) {
+  // $example:(1,100);
+  $total: 0;
+
+  @each $name, $px in $list-arr {
+    $total: $total + $px;
+  }
+
+  @each $name, $px in $list-arr {
+    .#{$prefix}--#{$name} {
+      width: percentage($px / $total);
+    }
+  }
+}
+
+// 切割等份div
+@mixin inciseWidth($total, $num: 1) {
+  .w-#{$num}\/#{$total} {
+    width: percentage($num / $total);
+  }
+}
+
+// 缩小
+@mixin shrink($scale) {
+  transform-origin: center;
+  transform: scale($scale);
+}
+
+// 生成动画效果
+@mixin createTransition($mode: fast) {
+  $speed-tab: (
+    fast: 0.3s,
+    normal: 0.5s,
+    slow: 1s
+  );
+
+  transition: all map-get($speed-tab, $mode);
+}
+
+// 多行文字省略号
+@mixin multiOverHidden($line-number: 3, $bg: white, $line-height: 1.4) {
+  max-height: #{($line-number * $line-height)}em;
+  line-height: $line-height;
+  overflow: hidden;
+  box-sizing: content-box;
+
+  .inner {
+    float: right;
+    margin-left: -5px;
+    width: 100%;
+    word-break: break-all;
+  }
+
+  &::before {
+    float: left;
+    width: 5px;
+    content: '';
+    height: #{($line-number * $line-height)}em;
+  }
+
+  &::after {
+    float: right;
+    content: '...';
+    height: #{$line-height}em;
+    line-height: $line-height;
+    padding-right: 5px;
+    text-align: right;
+    width: 3em;
+    margin-left: -3em;
+    position: relative;
+    left: 100%;
+    top: -#{$line-height}em;
+    background: $bg;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), $bg 60%, $bg);
+  }
+}
+
+// 单行超出隐藏
+@mixin singleOverHidden($max-width: 100%) {
+  padding-right: 2px;
+  max-width: $max-width;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// 生成占位符
+@mixin createPlaceholder($ratio: 1) {
+  position: relative;
+  height: 0px;
+  width: 100%;
+  padding-bottom: percentage($ratio);
+}
+
+// 生成绝对定位
+@mixin absolute-tl {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+@mixin absolute-tr {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+@mixin absolute-bl {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+@mixin absolute-br {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+// 生成普通背景图片
+@mixin create-bg($url, $repeat: no-repeat, $position: center, $size: cover) {
+  background-image: url($url);
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+}

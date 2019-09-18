@@ -1,0 +1,129 @@
+@mixin create-font-size {
+  $font-size-list: (
+    text-h1: $text-h1,
+    text-h2: $text-h2,
+    text-h3: $text-h3,
+    text-h4: $text-h4,
+    text-h5: $text-h5,
+    text-h6: $text-h6,
+    text-body-maxus: $text-body-maxus,
+    text-body: $text-body,
+    text-body-minus: $text-body-minus
+  );
+
+  @each $name, $size in $font-size-list {
+    .#{$name} {
+      font-size: $size;
+    }
+  }
+}
+
+@mixin create-common-css {
+  // 严格参照取名
+  // https://tailwindcss.com/docs
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .invisible {
+    visibility: hidden;
+  }
+  .hidden {
+    display: none;
+  }
+  .font-bold {
+    font-weight: bold;
+  }
+  .font-normal {
+    font-weight: normal;
+  }
+  .min-w-0 {
+    min-width: 0px;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .flex-auto {
+    flex: auto;
+  }
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
+  .flex {
+    display: flex;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-around {
+    justify-content: space-around;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .justify-end {
+    justify-content: flex-end;
+  }
+  .justify-start {
+    justify-content: flex-start;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .items-end {
+    align-items: flex-end;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .h-full {
+    height: 100%;
+  }
+  // 以下与文档地址的规范不符，属于个人定义的名称
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .flex-row-center {
+    display: flex;
+    justify-content: center;
+  }
+  .flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flex-row-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .flex-col-center-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@mixin create-custom-css {
+  .single-over-hidden {
+    padding-right: 2px;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+@include create-common-css();
+@include create-font-size();
+@include create-custom-css();

@@ -1,0 +1,161 @@
+/* 引入element-ui css */
+@import '../../theme/index.css';
+// cover some element-ui styles
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: bold !important;
+}
+
+.el-upload {
+  input[type='file'] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block;
+  }
+}
+
+.el-input__suffix {
+  @include createFlex($items: center);
+}
+// 管理全局button
+.el-button {
+  display: inline-block;
+  @include createFlex($items: center, $content: center);
+  opacity: 1;
+  @include createTransition($mode: fast);
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  .svg-icon {
+    margin-right: 4px;
+  }
+
+  // 根据size 控制大小高度
+  &.el-button--small {
+    font-size: $text-body;
+    border-radius: 4px;
+    padding: 0px 14px;
+    height: 30px;
+  }
+
+  &.el-button--normal {
+    font-size: $text-body-maxus;
+    border-radius: 5px;
+    padding: 0px 17px;
+    height: 40px;
+  }
+
+  // 修饰 class
+  &.mellow {
+    border-radius: 20px;
+  }
+  &.submit {
+    width: 370px;
+    font-size: $text-h6;
+  }
+
+  // 根据type变化样式
+  &.el-button--main {
+    border-color: $main-color;
+    color: $main-color;
+  }
+  &.el-button--operate {
+    border-color: #d7d7d7;
+  }
+  &.el-button--save {
+    color: white;
+    border: none;
+    background: $success-color;
+  }
+}
+
+// 常用表单组件改成自定义宽高
+.el-custom-input,
+.el-custom-select,
+.el-custom-input-number,
+.el-custom-date {
+  line-height: $input-height;
+  height: $input-height;
+
+  .el-input__inner {
+    width: 100%;
+    height: 100%;
+    line-height: $input-height;
+  }
+}
+.el-custom-input {
+  width: 100%;
+
+  &.el-textarea {
+    height: $textarea-height;
+
+    .el-textarea__inner {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+.el-custom-input-number {
+  .el-input {
+    height: 100%;
+    .el-input__inner {
+      text-align: left;
+    }
+  }
+}
+.el-custom-date {
+  .el-input__icon {
+    line-height: $input-height;
+  }
+}
+.el-custom-select > .el-input {
+  width: 100%;
+  height: 100%;
+}
+
+// 全局遮罩
+.el-loading-mask {
+  background: rgba($color: $color-white, $alpha: 0.9);
+
+  .el-loading-spinner .path {
+    stroke-width: 4px;
+    stroke: $main-color;
+  }
+}
+
+// 全局消息弹窗
+.el-message {
+  z-index: 9999 !important;
+}
