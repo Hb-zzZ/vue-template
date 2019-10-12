@@ -13,7 +13,7 @@
 
 
 <script>
-import ElCustomInput from '@/components/global/CreateForm/components/ElCustomInput'
+import ElCustomInput from '@/components/_global/CreateForm/components/ElCustomInput'
 
 export default {
   components: {

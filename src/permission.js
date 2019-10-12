@@ -18,14 +18,16 @@ router.beforeEach(async (to, from, next) => {
   document.title = getPageTitle(to.meta.title)
 
   // 检测浏览器是否支持
-  if (!canSupportCss() && from.name === 'NoSupport') {
-    next(false)
-    NProgress.done()
-    return
-  }
-  if (!canSupportCss() && to.name !== 'NoSupport') {
-    next({ name: 'NoSupport' })
-    return
+  if (!canSupportCss()) {
+    if (from.name === 'NoSupport') {
+      next(false)
+      NProgress.done()
+      return
+    }
+    if (to.name !== 'NoSupport') {
+      next({ name: 'NoSupport' })
+      return
+    }
   }
 
   // determine whether the user has logged in

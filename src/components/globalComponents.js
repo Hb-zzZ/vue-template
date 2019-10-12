@@ -4,7 +4,7 @@ import Vue from 'vue'
 import './ElCustomTable/registerGlobal'
 
 // 自动注册全局组件 例:global文件夹下有一个组件IconTitle  则引用<icon-title />
-const req = require.context('./global', true, /index\.vue$/)
+const req = require.context('./_global', true, /index\.vue$/)
 const requireAll = (requireContext) => {
   const files = requireContext.keys()
   let fileName

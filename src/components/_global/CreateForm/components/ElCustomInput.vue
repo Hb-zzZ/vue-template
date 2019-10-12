@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import defaultConfig from '@/components/global/CreateForm/default'
+import defaultConfig from '@/components/_global/CreateForm/default'
 const config = defaultConfig['input']
 
 export default {

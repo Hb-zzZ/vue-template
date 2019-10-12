@@ -148,7 +148,7 @@
 
 
 <script>
-import defaultConfig from '@/components/global/CreateForm/default'
+import defaultConfig from '@/components/_global/CreateForm/default'
 import {
   ElCustomSelect,
   ElCustomInputNumber,

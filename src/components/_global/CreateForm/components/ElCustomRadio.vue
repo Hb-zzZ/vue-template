@@ -1,20 +1,18 @@
 <template>
-  <el-date-picker
+  <el-radio-group
     :value="value"
     :disabled="disabled"
-    type="date"
-    format="yyyy-MM-dd"
-    value-format="yyyy-MM-dd"
-    class="el-custom-size el-custom-date"
     :class="className"
-    :placeholder="placeholder"
+    class="el-custom-size el-custom-radio"
     @input="change($event)"
-  />
+  >
+    <slot />
+  </el-radio-group>
 </template>
 
 <script>
-import defaultConfig from '@/components/global/CreateForm/default'
-const config = defaultConfig['date']
+import defaultConfig from '@/components/_global/CreateForm/default'
+const config = defaultConfig['radio']
 
 export default {
   model: {
@@ -32,10 +30,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-    placeholder: {
-      type: String,
-      default: config.placeholder
     }
   },
   methods: {

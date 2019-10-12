@@ -29,7 +29,6 @@ import * as customFilters from '@/utils/filters'
 
 Object.keys(customFilters).forEach((item) => Vue.filter(item, customFilters[item])) // 注册过滤器
 
-// set ElementUI lang to EN
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

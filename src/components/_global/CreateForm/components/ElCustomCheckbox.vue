@@ -3,7 +3,7 @@
     :value="value"
     :disabled="disabled"
     :class="className"
-    class="el-custom-size el-custom-radio"
+    class="el-custom-size el-custom-checkbox"
     @input="change($event)"
   >
     <slot />
@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import defaultConfig from '@/components/global/CreateForm/default'
-const config = defaultConfig['radio']
+import defaultConfig from '@/components/_global/CreateForm/default'
+const config = defaultConfig['checkbox']
 
 export default {
   model: {

@@ -1,6 +1,6 @@
 // 自动导出局部组件  引用方式 import { xxx } form '@/components'
 
-const req = require.context('./regional', true, /index\.vue$/)
+const req = require.context('./_regional', true, /index\.vue$/)
 const requireAll = (requireContext) => {
   const files = requireContext.keys()
   let fileName
