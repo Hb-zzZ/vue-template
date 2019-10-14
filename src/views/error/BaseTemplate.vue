@@ -21,9 +21,8 @@
 
 <style lang="scss" scoped>
 .wscn-http-container {
-  height: calc(100% - #{$copyrightHeight});
+  height: 100vh;
   @include createFlex($content: center, $items: center);
-  min-height: 400px;
 }
 .wscn-http {
   position: relative;

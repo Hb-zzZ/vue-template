@@ -8,7 +8,7 @@ export default {
 
     return `${Math.random().toFixed(randomPow) * Math.pow(10, randomPow)}-${new Date().getTime()}`
   },
-  // 富文本转义
+  // 富文本解析
   escape2Html(str) {
     const arrEntities = {
       '&lt;': '<',

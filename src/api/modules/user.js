@@ -1,24 +1,24 @@
 import request from '@/utils/request'
 
-export function login(params) {
+export function login(data) {
   return request({
-    url: '/a/wy/login',
+    url: '/user/login',
     method: 'post',
-    params
+    data
   })
 }
 
-export function getInfo() {
+export function getInfo(params) {
   return request({
-    url: '/a/wy/getCurrentUser',
-    method: 'get'
+    url: '/user/info',
+    method: 'get',
+    params
   })
 }
 
 export function logout() {
   return request({
-    url: '/a/wy/logout',
-    method: 'get',
-    loadingType: 'overall'
+    url: '/user/logout',
+    method: 'post'
   })
 }

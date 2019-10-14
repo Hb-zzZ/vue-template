@@ -5,7 +5,7 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { getToken } from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
-import getRoutes from '@/utils/getRoutes'
+import getAsyncRoutes from '@/utils/getAsyncRoutes'
 import { canSupportCss } from '@/utils/support'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
@@ -39,21 +39,15 @@ router.beforeEach(async (to, from, next) => {
       next({ path: '/' })
       NProgress.done()
     } else {
-      const { isLogin, isFirstLogin } = store.getters
+      const { isLogin } = store.getters
 
       if (isLogin) {
-        if (!isFirstLogin) {
-          next()
-        } else {
-          // 第一次登陆
-          await store.dispatch('user/resetIsFirstLogin')
-          next()
-        }
+        next()
       } else {
         try {
           // get user info
-          store.dispatch('user/getInfo').then(() => {
-            const asyncTables = getRoutes()
+          store.dispatch('user/getInfo').then((res) => {
+            const asyncTables = getAsyncRoutes(res)
 
             store.dispatch('user/addRoutes', asyncTables).then(() => {
               router.addRoutes(asyncTables) // 动态添加可访问路由表

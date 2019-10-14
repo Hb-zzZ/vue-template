@@ -83,7 +83,7 @@ export default {
   display: inline-block;
   font-size: 14px;
   font-weight: bold;
-  // line-height: 50px;
+  line-height: $normalNavHeight;
   margin-left: 15px;
 
   .no-redirect {

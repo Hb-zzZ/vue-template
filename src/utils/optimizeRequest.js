@@ -4,13 +4,13 @@ loadingType  loading类型
 highFrequency  是否高频 高频时不限制繁忙请求
 brevity  是否短暂的 直接出现遮罩，不等请求完成取消
 
-canRequest or replaceRequest 一个实例下只能存在一个
+canRequest or replaceRequest 一个实例下只能使用一种方式
 * */
 
 import store from '@/store'
-// 默认遮罩
+// 默认遮罩类型
 const initType = 'inline'
-// 遮罩优先级
+// 遮罩优先级 前面的优先
 const priority = ['dialog', 'overall', 'inline']
 
 export class OptimizeRequest {

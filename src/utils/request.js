@@ -4,8 +4,10 @@ import store from '@/store'
 import { getToken } from '@/utils/auth'
 import defaultSettings from '@/settings'
 import optimizeRequest from './optimizeRequest'
+import router from '@/router'
 
 const downloadFile = (res) => {
+  // 下载文件函数，文件名当前默认取后台返回的  content-disposition header字段
   if (res.data.type === 'application/json') {
     Message({
       message: res.msg || '下载出错，请重试',
@@ -39,7 +41,7 @@ const downloadFile = (res) => {
 // create an axios instance
 const service = axios.create({
   baseURL: defaultSettings.http, // url = base url + request url
-  timeout: 10000, // request timeout
+  timeout: defaultSettings.httpTimeout, // request timeout
   headers: {
     common: {
       'Cache-Control': 'no-cache'
@@ -47,7 +49,7 @@ const service = axios.create({
     get: {
       'If-Modified-Since': '0'
     }
-  } // 去缓存
+  } // IE去缓存
 })
 
 const CancelToken = axios.CancelToken
@@ -97,12 +99,7 @@ service.interceptors.response.use(
         type: 'error',
         duration: 5 * 1000
       })
-      // 没有权限登录code
-      if ([30001, 30002].includes(code)) {
-        store.dispatch('user/resetToken').then(() => {
-          location.reload()
-        })
-      }
+
       return Promise.reject(new Error(res.msg || '后台请求错误'))
     } else {
       return res
@@ -117,12 +114,11 @@ service.interceptors.response.use(
     if (error.response) {
       // 请求返回的错误
       const errorInfo = error.response.data
+      const httpStatus = Number(error.response.status)
 
-      const code = Number(errorInfo.code)
-
-      if ([30001, 30002].includes(code)) {
+      if ([401].includes(httpStatus)) {
         store.dispatch('user/resetToken').then(() => {
-          location.reload()
+          router.replace({ path: `/login` })
         })
       }
       Message({

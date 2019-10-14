@@ -40,21 +40,21 @@ module.exports = {
     proxy: {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
-      // [process.env.VUE_APP_BASE_API]: {
-      //   target: `http://127.0.0.1:${port}/mock`,
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     ['^' + process.env.VUE_APP_BASE_API]: ''
-      //   }
-      // },
-      '/api': {
-        target: 'http://xxx', // 代理
+      [process.env.VUE_APP_BASE_API]: {
+        target: `http://127.0.0.1:${port}/mock`,
         changeOrigin: true,
-        ws: true,
         pathRewrite: {
-          '^/api': ''
+          ['^' + process.env.VUE_APP_BASE_API]: ''
         }
       }
+      // '/api': {
+      //   target: 'http://xxx', // 代理
+      //   changeOrigin: true,
+      //   ws: true,
+      //   pathRewrite: {
+      //     '^/api': ''
+      //   }
+      // }
     },
     after: require('./mock/mock-server.js')
   },
@@ -102,9 +102,7 @@ module.exports = {
 
     config
       // https://webpack.js.org/configuration/devtool/#development
-      .when(process.env.NODE_ENV === 'development', (config) =>
-        config.devtool('source-map')
-      )
+      .when(process.env.NODE_ENV === 'development', (config) => config.devtool('source-map'))
 
     // sass文件集体加载
     const oneOfsMap = config.module.rule('scss').oneOfs.store

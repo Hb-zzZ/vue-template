@@ -18,7 +18,7 @@ export default {
 <style lang="scss" scoped>
 .no-support-wrap {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: relative;
   min-width: 1000px;
 

@@ -27,6 +27,10 @@ import optimizeRequest from '@/utils/optimizeRequest' // 请求优化，loading
 
 import * as customFilters from '@/utils/filters'
 
+// mock
+import { mockXHR } from '../mock'
+mockXHR()
+
 Object.keys(customFilters).forEach((item) => Vue.filter(item, customFilters[item])) // 注册过滤器
 
 Vue.use(ElementUI)

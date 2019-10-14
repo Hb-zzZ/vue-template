@@ -17,7 +17,12 @@ module.exports = {
 
   /**
    * @type {String}
-   * @description 请求地址
+   * @description 请求基本地址
    */
-  http: http
+  http: http,
+  /**
+   * @type {Number}  ms
+   * @description 请求超时时间
+   */
+  httpTimeout: 10000
 }

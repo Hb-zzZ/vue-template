@@ -11,16 +11,7 @@ $text-body-minus: 12px;
 
 // layout
 $appMaxWidth: 1354px;
-$appBeside: 10px;
-$contentWidth: 88%;
-// 最顶部
-$overallNavHeight: 58px;
-// 二级菜单
-$overallSubNavHeight: 50px;
-// 面包屑header
-$appHeaderHeight: 60px;
-// 底部copyright
-$copyrightHeight: 90px;
+$normalNavHeight: 50px;
 // 定制页码高度
 $paginationHeight: 52px;
 
@@ -29,17 +20,12 @@ $main-color: #385fff;
 $link-color: #2F4DDB;
 $tip-color: #838996;
 $error-color: #FF2900;
-$light-blue: #E9F2FE;
 $success-color: #28CC8B;
 
 $color-black: #3B4A6B;
 $color-white: white;
 
 $border-grey: rgba(232,238,243,1);
-
-// bg
-$main-bg: white;
-$body-bg: rgba(241,242,245,1);
 
 // gutter
 $normal-gutter: 15px;
@@ -54,15 +40,14 @@ $menuText: #3C4A6B;
 $menuActiveText: #3C4A6B;
 $subMenuActiveText: #3C4A6B; //https://github.com/ElemeFE/element/issues/12951
 
-$menuBg: white;
-$menuHover: $light-blue;
-$menuBgActive: $light-blue;
+$menuBg: #ccc;
+$menuHover: #838996;
+$menuBgActive: #838996;
 
-$subMenuBg: white;
-$subMenuHover: $light-blue;
+$subMenuBg: #ccc;
+$subMenuHover: #838996;
 
 $sideBarWidth: 240px;
-$sideBarItemHeight: 42px;
 
 // the :export directive is the magic sauce for webpack
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass

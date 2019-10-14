@@ -1,14 +1,11 @@
 import $fetch from '@/api'
 import { getToken, setToken, removeToken } from '@/utils/auth'
-import Cookies from 'js-cookie'
 import { resetRouter } from '@/router'
 import constantRoutes from '@/router/modules/constantRoutes'
 
 const state = {
   routes: constantRoutes,
   token: getToken(),
-  role: [],
-  isFirstLogin: false,
   isLogin: false,
   name: '',
   avatar: '',
@@ -31,26 +28,6 @@ const mutations = {
   SET_USERINFO: (state, userInfo) => {
     state.userInfo = userInfo
   },
-  SET_ROLE: (state, role) => {
-    let roleMap
-    if (!Array.isArray(role)) {
-      roleMap = role.split(',')
-    } else {
-      roleMap = role
-    }
-    const roleFilter = {
-      '1': 'async'
-    }
-
-    const roleArr = []
-    roleMap.map((role) => {
-      roleArr.push(roleFilter[role])
-    })
-    state.role = roleArr
-  },
-  SET_ISFIRSTLOGIN: (state, isFirstLogin) => {
-    state.isFirstLogin = isFirstLogin
-  },
   SET_ISLOGIN: (state, isLogin) => {
     state.isLogin = isLogin
   }
@@ -62,8 +39,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       $fetch.user
         .login(userInfo)
-        .then((response) => {
-          const { body: data } = response
+        .then((res) => {
+          const { data } = res
           commit('SET_TOKEN', data.token)
           setToken(data.token)
           resolve()
@@ -78,26 +55,22 @@ const actions = {
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       $fetch.user
-        .getInfo(state.token)
-        .then((response) => {
-          const { body: data } = response
+        .getInfo({ token: state.token })
+        .then((res) => {
+          const { data } = res
 
           if (!data) {
             reject('非法登录，请重新登陆')
           }
 
-          const { loginName: name, userType: role = [] } = data.user
+          const { name, avatar } = data
 
           commit('SET_ISLOGIN', true)
           commit('SET_NAME', name)
-          commit('SET_ROLE', role)
-          commit('SET_USERINFO', data.user)
+          commit('SET_AVATAR', avatar)
+          commit('SET_USERINFO', data)
 
-          if (Number(data.loginCount) <= 1) {
-            commit('SET_ISFIRSTLOGIN', true)
-          }
-
-          resolve(data.user)
+          resolve(data)
         })
         .catch((error) => {
           reject(error)
@@ -105,26 +78,21 @@ const actions = {
     })
   },
 
-  resetIsFirstLogin({ commit }) {
-    commit('SET_ISFIRSTLOGIN', false)
-  },
-
   resetUserInfo({ commit }) {
-    Cookies.set('firstLoginSkip', false)
     commit('SET_ISLOGIN', false)
     commit('SET_NAME', '')
     commit('SET_AVATAR', '')
+    commit('SET_USERINFO', {})
   },
 
   // user logout
-  logout({ commit, state, dispatch }) {
+  logout({ state, dispatch }) {
     return new Promise((resolve, reject) => {
       $fetch.user
         .logout(state.token)
         .then(() => {
-          commit('SET_TOKEN', '')
-          removeToken()
           resetRouter()
+          dispatch('resetToken')
           dispatch('resetUserInfo')
           dispatch('resetRoutes')
           resolve()
