@@ -75,7 +75,7 @@ export default {
       width: 100%;
       height: 100%;
       @include absolute-tr();
-      @include create-bg($url: '../images/tbac_pic@2x.png', $size: 99% 56%, $position: top right);
+      @include createBg($url: '../images/tbac_pic@2x.png', $size: 99% 56%, $position: top right);
       z-index: 0;
     }
     .header-content {

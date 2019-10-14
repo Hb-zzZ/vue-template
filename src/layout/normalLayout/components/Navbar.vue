@@ -80,7 +80,7 @@ export default {
   .right-menu {
     float: right;
     height: 100%;
-    line-height: 50px;
+    line-height: $normalNavHeight;
 
     &:focus {
       outline: none;

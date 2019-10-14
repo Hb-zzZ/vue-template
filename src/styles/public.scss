@@ -87,7 +87,16 @@
   .h-full {
     height: 100%;
   }
-  // 以下与文档地址的规范不符，属于个人定义的名称
+}
+
+@mixin create-custom-css {
+  .single-over-hidden {
+    padding-right: 2px;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
   .flex-col {
     display: flex;
     flex-direction: column;
@@ -111,16 +120,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-}
-
-@mixin create-custom-css {
-  .single-over-hidden {
-    padding-right: 2px;
-    max-width: 100%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
   }
 }
 

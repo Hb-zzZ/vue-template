@@ -52,6 +52,8 @@ npm run lint
 npm run lint -- --fix
 ```
 
+---
+
 ### 目录结构
 
 ```
@@ -62,7 +64,7 @@ npm run lint -- --fix
 │   │── favicon.ico                       # favicon图标
 │   └── index.html                        # html模板
 ├── src                                   # 源代码
-│   ├── api   
+│   ├── api
 │   │    │── index.js                     # 自动注册 modules 下所有请求
 │   │    └── modules                      # 所有请求
 │   ├── assets                            # 共用图片等静态资源

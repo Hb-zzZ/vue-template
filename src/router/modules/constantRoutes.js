@@ -1,4 +1,4 @@
-import { normalLayout } from '@/layout/index.js'
+import { normalLayout } from '@/layout'
 
 export default [
   {
@@ -11,10 +11,8 @@ export default [
         name: 'Home',
         component: () => import('@/views/home/index'),
         meta: {
-          unRequiredLogin: true,
           title: '首页',
-          icon: 'eye',
-          activeTab: 'home'
+          icon: 'menu'
         }
       }
     ]

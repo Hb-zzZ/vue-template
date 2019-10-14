@@ -55,7 +55,7 @@ export default {
     width: 100%;
     max-width: $appMaxWidth;
     @include createFlex($direction: col, $items: center);
-    @include create-bg($url: './images/backgroundline.svg', $size: 100% auto, $position: top center);
+    @include createBg($url: './images/backgroundline.svg', $size: 100% auto, $position: top center);
 
     .public-header {
       width: 100%;
