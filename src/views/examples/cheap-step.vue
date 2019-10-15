@@ -43,15 +43,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.example-wrap {
-  padding: 50px 50px;
-  width: 100%;
+@import './layout.scss';
 
-  .example-inner {
-    padding: 100px 0px;
-    background: rgb(18, 44, 49);
-    color: white;
-    @include createFlex($content: center, $items: center);
-  }
+.example-inner {
+  background: rgb(18, 44, 49) !important;
+  color: white !important;
 }
 </style>

@@ -1,0 +1,12 @@
+.example-wrap {
+  padding: 50px 50px;
+  width: 100%;
+  position: relative;
+
+  .example-inner {
+    padding: 100px 0px;
+    background: white;
+    color: #333;
+    @include createFlex($content: center, $items: center);
+  }
+}

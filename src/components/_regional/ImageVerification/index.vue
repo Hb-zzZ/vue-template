@@ -16,7 +16,7 @@ export default {
   },
   props: {
     value: {
-      type: [Number, String],
+      type: String,
       required: true
     }
   },
@@ -56,6 +56,6 @@ export default {
   border-radius: 4px;
   color: #af4949;
   font-size: $text-h6;
-  @include createFlex($content:center,$items:center);
+  @include createFlex($content: center, $items: center);
 }
 </style>

@@ -1,6 +1,6 @@
 # 其他
 
-## Browsers support
+### Browsers support
 
 Modern browsers and Internet Explorer 10+.
 
@@ -8,8 +8,12 @@ Modern browsers and Internet Explorer 10+.
 | --------- | --------- | --------- | --------- |
 | IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
 
-## License
+### License
 
 [MIT](https://github.com/Hb-zzZ/vue-template/blob/master/LICENSE) license.
 
 Copyright (c) 2019 Hb_zzZ
+
+### 文档最后更新时间 
+
+{docsify-updated}
