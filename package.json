@@ -7,17 +7,18 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "build:prod": "vue-cli-service build",
-    "build:modern": "vue-cli-service build --modern",
-    "build:stage": "vue-cli-service build --mode staging",
+    "build:test": "vue-cli-service build --mode test",
     "preview": "node build/index.js --preview",
     "lint": "eslint --ext .js,.vue src",
     "test:unit": "jest --clearCache && vue-cli-service test:unit",
     "test:ci": "npm run lint && npm run test:unit",
-    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
+    "git:commit": "git cz"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "axios": "0.18.1",
+    "commitizen": "^4.1.2",
     "element-ui": "2.7.2",
     "js-cookie": "2.2.0",
     "lodash": "^4.17.14",

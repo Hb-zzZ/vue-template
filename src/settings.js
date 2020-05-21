@@ -1,5 +1,8 @@
 const http = 'http://xxx'
 
+const { NODE_ENV, VUE_APP_BASE_API } = process.env
+
+const lastHttp = NODE_ENV === 'development' ? http : VUE_APP_BASE_API
 module.exports = {
   title: 'vue-template',
 
@@ -19,7 +22,7 @@ module.exports = {
    * @type {String}
    * @description 请求基本地址
    */
-  http: http,
+  http: lastHttp,
   /**
    * @type {Number}  ms
    * @description 请求超时时间
